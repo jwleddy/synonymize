@@ -1,17 +1,18 @@
-module.exports = function(io) {
+module.exports = function (io) {
   var express = require('express');
   var router = express.Router();
   var moby = require('moby');
   var synonymize = require('../synonymize');
 
   /* GET home page. */
-  router.get('/', function(req, res, next) {
+  router.get('/', function (req, res, next) {
     res.render('index', { title: 'synonymize'});
   });
 
+  /* socket.io */
   io.on('connection', function (socket) {
     socket.on('send to server', function (data) {
-    socket.emit('display to client', synonymize(data));
+      socket.emit('display to client', synonymize(data));
     });
   });
 

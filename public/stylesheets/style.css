@@ -1,7 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Cabin);
 
 body {
-  font: 26px Lato, Helvetica, Arial, sans-serif;
+  font: 26px Cabin, Helvetica, Arial, sans-serif;
 }
 
 #title {
@@ -10,18 +10,18 @@ body {
 
 #title h4 {
   font-size:68px;
-  color: #0277bd;
+  color: black;
 }
 
 #display {
-  height: 250px;
+  height: 350px;
   width: 100%;
 }
 
-#input-field, #input-field:active {
-  font-size:18px;
-  height: 200px;
-  width: 80%;
+#input-field {
+  font-size:16px;
+  height: 150px;
+  width: 60%;
   border: 0px;
   resize: none;
   padding:10px;

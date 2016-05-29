@@ -7,6 +7,7 @@ module.exports = function(data) {
       var replacement = results[Math.floor(Math.random()*results.length)]
       splitData[i] = replacement;
     };
+    splitData[i] = splitData[i].toLowerCase();
   }
   return splitData.join(' ');
 }
