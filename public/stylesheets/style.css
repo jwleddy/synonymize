@@ -1,8 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 26px Lato, Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#title {
+  margin-top:5%;
+  text-align:center;
+}
+
+#title h4 {
+  font-size:48px;
+}
+
+#display {
+  height: 200px;
+  width: 100%;
+  background-color:beige;
+}
+
+#input-field, #input-field:active {
+  font-size:18px;
+  height: 200px;
+  width: 80%;
+  border: 0px;
+  resize: none;
+  padding:10px;
+  outline: none;
+}
+
+#input-container {
+  text-align:center;
 }
