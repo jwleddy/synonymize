@@ -6,7 +6,7 @@ module.exports = function(io) {
 
   /* GET home page. */
   router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express', searchResult: moby.search('mad') });
+    res.render('index', { title: 'synonymize'});
   });
 
   io.on('connection', function (socket) {

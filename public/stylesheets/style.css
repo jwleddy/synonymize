@@ -5,18 +5,17 @@ body {
 }
 
 #title {
-  margin-top:5%;
   text-align:center;
 }
 
 #title h4 {
-  font-size:48px;
+  font-size:68px;
+  color: #0277bd;
 }
 
 #display {
-  height: 200px;
+  height: 250px;
   width: 100%;
-  background-color:beige;
 }
 
 #input-field, #input-field:active {
