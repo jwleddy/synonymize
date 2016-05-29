@@ -1,8 +1,7 @@
 module.exports = function (io) {
   var express = require('express');
   var router = express.Router();
-  var moby = require('moby');
-  var synonymize = require('../synonymize');
+  var synonymize = require('../helpers/synonymize');
 
   /* GET home page. */
   router.get('/', function (req, res, next) {

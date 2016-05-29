@@ -1,7 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Cabin);
 
 body {
-  font: 26px Cabin, Helvetica, Arial, sans-serif;
+  font: 26px monospace;
 }
 
 #title {
@@ -26,8 +25,21 @@ body {
   resize: none;
   padding:10px;
   outline: none;
+  color:white;
 }
 
 #input-container {
   text-align:center;
+}
+
+p {
+  font-size:16px;
+  text-align: center;
+}
+p span {
+  padding: 0px 3px 0px 3px;
+  border:1px solid black;
+  border-radius:2px;
+  color:white;
+  background-color:#5D5D5D;
 }
