@@ -7,7 +7,7 @@ $(document).ready(function() {
     event.stopPropagation();
     socket.emit('send to server', $('#input-field').val());
   });
-  
+
   // Shift key always sends data to server
   $(document).keyup(function(event) {
     if (event.which === 16) {
@@ -17,6 +17,7 @@ $(document).ready(function() {
 
   // Display div populated with synonymized text
   socket.on('display to client', function (data) {
-    $('#display').text(data);
+    $('#display').html(data.replace(/\n/g,'<br \>'));
   });
+  
 });
