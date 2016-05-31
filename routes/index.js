@@ -1,3 +1,4 @@
+// Router will take io parameter from app.io in app.js
 module.exports = function (io) {
   var express = require('express');
   var router = express.Router();

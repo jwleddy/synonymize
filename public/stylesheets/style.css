@@ -15,6 +15,10 @@ body {
 #display {
   height: 350px;
   width: 100%;
+  font-size:18px;
+  padding: 5% 20% 0 10%;
+  cursor:default;
+  color:#961D1D;
 }
 
 #input-field {
@@ -31,6 +35,14 @@ body {
   text-align:center;
 }
 
+.sticky {
+  color:black;
+}
+
+.perma-sticky {
+  color:black;
+}
+
 p {
   font-size:16px;
   text-align: center;
@@ -39,4 +51,8 @@ p span {
   padding: 0px 3px 0px 3px;
   border:1px solid black;
   border-radius:2px;
+}
+
+span {
+  outline: none;
 }
