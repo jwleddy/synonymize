@@ -1,63 +1,72 @@
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var config = {
-  entry: './main.js',
+const CLIENT_DIR = path.resolve(__dirname, 'client');
+const SERVER_DIR = path.resolve(__dirname, 'server/generated');
+const DIST_DIR = path.resolve(__dirname, 'dist');
 
-  output:
+const loaders = [
   {
-    path: './',
-    filename: 'index.js',
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    loader: 'babel',
+    query: {
+      presets: ['es2015', 'react']
+    }
   },
-
-  devServer:
   {
-    inline: true,
-    port: 4000
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
   },
-
-  module:
   {
-    loaders: [
-    {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query:
-      {
-        presets: ['es2015', 'react']
-      }
-    },
-    {
-      test: /\.css$/,
-      loader: "style-loader!css-loader"
-    },
-    {
-      test: /\material-ui-table-edit\/index\.jsx$/,
-      loader: "jsx-loader"
-    },
-    {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('css!sass')
-    },
-    {
-      test: /\.less$/,
-      loader: "style!css!less"
-    },
-    {
-      test: /\.json$/,
-      loader: 'json'
-    },
-    { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-    { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
-    ]
+    test: /\.json$/,
+    loader: 'json'
+  }
+];
+
+module.exports = [{
+  name: 'client',
+  target: 'web',
+  context: CLIENT_DIR,
+  entry: './index.js',
+  output: {
+    path: DIST_DIR,
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: loaders
+  },
+  resolve: {
+    alias: {
+      components: path.resolve(CLIENT_DIR, 'components')
+    }
   },
   plugins: [
-    new ExtractTextPlugin('public/style.css',
-    {
-      allChunks: true
-    })
+   new ExtractTextPlugin('bundle.css', {allChunks: true})
   ]
-}
-
-module.exports = config;
+},
+{
+  name: 'server',
+  target: 'node',
+  context: CLIENT_DIR,
+  entry: {
+    app: 'components/app/App.jsx'
+  },
+  output: {
+    path: SERVER_DIR,
+    filename: '[name].js',
+    libraryTarget: 'commonjs2'
+  },
+  externals: /^[a-z\-0-9]+$/,
+  module: {
+    loaders: loaders
+  },
+  resolve: {
+    alias: {
+      components: path.resolve(CLIENT_DIR, 'components')
+    }
+  },
+  plugins: [
+   new ExtractTextPlugin('[name].css')
+  ]
+}];
